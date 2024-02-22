@@ -18,8 +18,8 @@ typedef struct list
 list;
 
 int is_empty(list *the_list);
-int insert_todo(list *the_list, unsigned char title,
-		unsigned char description);
+int insert_todo(list *the_list, unsigned char title[],
+		unsigned char description[]);
 void remove_all(list *the_list);
 
 #endif // LIST

@@ -1,7 +1,7 @@
 #ifndef TODO_ELEMENT
 #define TODO_ELEMENT
 
-typedef struc todo
+typedef struct todo
 {
     unsigned char title[20];
     unsigned char description[80];
