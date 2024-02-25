@@ -34,16 +34,16 @@ main()
 	switch (option)
 	{
 	    case 1:
-		create_todo(the_list);
+		create_task(the_list);
 		exit_key();
 		break;
 	    case 2:
-		view_todos(the_list);
+		view_tasks(the_list);
 		exit_key();
 		break;
 	    case 3:
-		view_todos(the_list);
-		delete_todo(the_list);
+		view_tasks(the_list);
+		delete_task(the_list);
 		exit_key();
 		break;
 	    case 4:

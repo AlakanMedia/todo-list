@@ -1,14 +1,14 @@
-#ifndef TODO_ELEMENT
-#define TODO_ELEMENT
+#ifndef TASK_ELEMENT
+#define TASK_ELEMENT
 
 #define MAX_TITLE 31
 #define MAX_DESCRIPTION 91
 
-typedef struct todo
+typedef struct task
 {
     unsigned char title[MAX_TITLE];
     unsigned char description[MAX_DESCRIPTION];
 }
-todo;
+task;
 
-#endif // TODO_ELEMENT
+#endif // TASK_ELEMENT

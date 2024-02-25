@@ -14,7 +14,7 @@ draw_menu_options()
 }
 
 void
-create_todo(list *the_list)
+create_task(list *the_list)
 {
     int c;
     int i = 0;
@@ -41,14 +41,14 @@ create_todo(list *the_list)
     if (i == (MAX_DESCRIPTION - 1))
         clean_buffer();
     
-    if (insert_todo(the_list, title, description))
+    if (insert_task(the_list, title, description))
 	printf("\nTask successfully created\n");
     else
 	printf("\nThere was a problem creating the task\n");
 }
 
 void
-view_todos(list *the_list)
+view_tasks(list *the_list)
 {
     printf("Task list\n\n");
 
@@ -59,7 +59,7 @@ view_todos(list *the_list)
 
     	while (aux != NULL)
     	{
-    	    printf("%d. Title: %s\n", ++i, aux->the_todo.title);
+    	    printf("%d. Title: %s\n", ++i, aux->the_task.title);
     	    aux = aux->next;
     	}
 	printf("\n");
@@ -69,13 +69,13 @@ view_todos(list *the_list)
 }
 
 void
-delete_todo(list *the_list)
+delete_task(list *the_list)
 {
     int task_remove = 0;
     printf("Select a task to remove: ");
     scanf("%d", &task_remove);
 
-    if (remove_todo(the_list, task_remove))
+    if (remove_task(the_list, task_remove))
 	printf("\nTask successfully removed\n");
     else
 	printf("\nThere was a problem removing the task\n");

@@ -1,11 +1,11 @@
 #ifndef LIST
 #define LIST
 
-#include "todo_element.h"
+#include "task_element.h"
 
 typedef struct node
 {
-    todo the_todo;
+    task the_task;
     struct node *next;
 }
 node;
@@ -19,9 +19,9 @@ typedef struct list
 list;
 
 int is_empty(list *the_list);
-int insert_todo(list *the_list, unsigned char title[],
+int insert_task(list *the_list, unsigned char title[],
 		unsigned char description[]);
-int remove_todo(list *the_list, int index);
+int remove_task(list *the_list, int index);
 void remove_all(list *the_list);
 
 #endif // LIST

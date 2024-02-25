@@ -9,7 +9,7 @@ is_empty(list *the_list)
 }
 
 int
-insert_todo(list *the_list, unsigned char title[],
+insert_task(list *the_list, unsigned char title[],
 	    unsigned char description[])
 {
     node *new_node = (node *) malloc(sizeof(node));
@@ -17,8 +17,8 @@ insert_todo(list *the_list, unsigned char title[],
     if (new_node == NULL)
 	return 0;
 
-    strncpy(new_node->the_todo.title, title, MAX_TITLE);
-    strncpy(new_node->the_todo.description, description, MAX_DESCRIPTION);
+    strncpy(new_node->the_task.title, title, MAX_TITLE);
+    strncpy(new_node->the_task.description, description, MAX_DESCRIPTION);
     new_node->next = NULL;
 
     if (is_empty(the_list))
@@ -38,7 +38,7 @@ insert_todo(list *the_list, unsigned char title[],
 }
 
 int
-remove_todo(list *the_list, int index)
+remove_task(list *the_list, int index)
 {
     if (!is_empty(the_list) && index > 0 && index <= the_list->num_elements)
     {
