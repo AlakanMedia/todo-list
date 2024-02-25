@@ -6,10 +6,10 @@ void
 draw_menu_options()
 {
     printf("Option menu\n\n");
-    printf("1 - Add todo\n");
-    printf("2 - List todos\n");
-    printf("3 - Delete todo\n");
-    printf("4 - Update todo\n");
+    printf("1 - Add task\n");
+    printf("2 - List tasks\n");
+    printf("3 - Delete task\n");
+    printf("4 - Update task\n");
     printf("5 - Exit\n");
 }
 
@@ -21,7 +21,7 @@ create_todo(list *the_list)
     unsigned char title[MAX_TITLE];
     unsigned char description[MAX_DESCRIPTION];
 
-    printf("Ingrese el título: ");
+    printf("Enter the task's name: ");
 
     while (i < (MAX_TITLE - 1) && (c = getchar()) != '\n')
         title[i++] = c;
@@ -32,7 +32,7 @@ create_todo(list *the_list)
 
     i = 0;
 
-    printf("Ingrese la descripción: ");
+    printf("Enter the task's description: ");
     
     while (i < (MAX_DESCRIPTION - 1) && (c = getchar()) != '\n')
         description[i++] = c;
@@ -42,28 +42,41 @@ create_todo(list *the_list)
         clean_buffer();
     
     if (insert_todo(the_list, title, description))
-	printf("\nUser successfully created\n");
+	printf("\nTask successfully created\n");
     else
-	printf("\nThere was a problem creating the user\n");
+	printf("\nThere was a problem creating the task\n");
 }
 
 void
 view_todos(list *the_list)
 {
-    printf("To do list\n\n");
+    printf("Task list\n\n");
 
     if (the_list->head)
     {
 	node *aux = the_list->head;
     	int i = 0;
 
-    	while(aux != NULL)
+    	while (aux != NULL)
     	{
-    	    printf("%d - Title: %s\n", ++i, aux->the_todo.title);
+    	    printf("%d. Title: %s\n", ++i, aux->the_todo.title);
     	    aux = aux->next;
     	}
 	printf("\n");
     }
     else
 	printf("The list is empty\n");
+}
+
+void
+delete_todo(list *the_list)
+{
+    int task_remove = 0;
+    printf("Select a task to remove: ");
+    scanf("%d", &task_remove);
+
+    if (remove_todo(the_list, task_remove))
+	printf("\nTask successfully removed\n");
+    else
+	printf("\nThere was a problem removing the task\n");
 }

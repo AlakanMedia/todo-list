@@ -37,7 +37,7 @@ insert_todo(list *the_list, unsigned char title[],
     return 1;
 }
 
-void
+int
 remove_todo(list *the_list, int index)
 {
     if (!is_empty(the_list) && index > 0 && index <= the_list->num_elements)
@@ -71,10 +71,15 @@ remove_todo(list *the_list, int index)
 	    aux = to_delete;
 	    to_delete = NULL;
 	}
-	    the_list->num_elements--;
-	    free(aux);
-	    aux = NULL;
+
+	the_list->num_elements--;
+	free(aux);
+	aux = NULL;
+
+	return 1;
     }
+
+    return 0;
 }
 
 void

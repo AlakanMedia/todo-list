@@ -21,7 +21,7 @@ list;
 int is_empty(list *the_list);
 int insert_todo(list *the_list, unsigned char title[],
 		unsigned char description[]);
-void remove_todo(list *the_list, int index);
+int remove_todo(list *the_list, int index);
 void remove_all(list *the_list);
 
 #endif // LIST

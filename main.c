@@ -4,6 +4,8 @@
 #include "user_interaction.h"
 #include "misc_funtions.h"
 
+void exit_key();
+
 int
 main()
 {
@@ -17,6 +19,7 @@ main()
     the_list->num_elements = 0;
 
     int option = 0;
+    int task_remove = 0;
 
     while (option != 5)
     {
@@ -26,33 +29,39 @@ main()
 	scanf("%d", &option);
 	clean_buffer();
 
+	system("clear");
+
 	switch (option)
 	{
 	    case 1:
-		system("clear");
 		create_todo(the_list);
-		printf("Press any key to exit... ");
-		getchar();
-		clean_buffer();
+		exit_key();
 		break;
 	    case 2:
-		system("clear");
 		view_todos(the_list);
-		printf("Press any key to exit... ");
-		getchar();
-		clean_buffer();
+		exit_key();
 		break;
 	    case 3:
+		view_todos(the_list);
+		delete_todo(the_list);
+		exit_key();
 		break;
 	    case 4:
 		break;
 	}
     }
 
+    remove_all(the_list);
     free(the_list);
     the_list = NULL;
 
     return 0;
 }
 
-
+void
+exit_key()
+{
+    printf("Press any key to exit... ");
+    getchar();
+    clean_buffer();
+}
