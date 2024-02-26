@@ -19,6 +19,7 @@ insert_task(list *the_list, unsigned char title[],
 
     strncpy(new_node->the_task.title, title, MAX_TITLE);
     strncpy(new_node->the_task.description, description, MAX_DESCRIPTION);
+    new_node->the_task.is_done = 0;
     new_node->next = NULL;
 
     if (is_empty(the_list))
@@ -35,6 +36,22 @@ insert_task(list *the_list, unsigned char title[],
     the_list->num_elements++;
 
     return 1;
+}
+
+node *
+select_task(list *the_list, int index)
+{
+    node *aux = NULL;
+
+    if (!is_empty(the_list) && index > 0 && index <= the_list->num_elements)
+    {
+	aux = the_list->head;
+
+	for (int i = 1; i < index; i++)
+	    aux = aux->next;
+    }
+
+    return aux;
 }
 
 int
