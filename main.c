@@ -39,6 +39,7 @@ main()
 		break;
 	    case 2:
 		view_tasks(the_list);
+		task_detail(the_list);
 		exit_key();
 		break;
 	    case 3:

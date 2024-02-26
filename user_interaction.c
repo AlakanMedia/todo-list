@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <ctype.h>
+#include "list.h"
 #include "user_interaction.h"
 #include "misc_funtions.h"
 
@@ -62,10 +64,40 @@ view_tasks(list *the_list)
     	    printf("%d. Title: %s\n", ++i, aux->the_task.title);
     	    aux = aux->next;
     	}
+
 	printf("\n");
     }
     else
 	printf("The list is empty\n");
+}
+
+void
+task_detail(list *the_list)
+{
+    if (the_list->head == NULL)
+	return;
+
+    printf("Want to see a task in more detail? [Y/n] ");
+    char more_detail = tolower(getchar());
+    clean_buffer();
+
+    if (more_detail == 'y')
+    {
+	int index = 0;
+
+	printf("Choose the task you want to see: ");
+	scanf("%d", &index); 
+
+	node *the_node = select_task(the_list, index);
+
+	if (the_node)
+	{
+	    printf("\nTitle: %s", the_node->the_task.title);
+	    printf("\nDescription: %s", the_node->the_task.description);
+	    printf("\nIs done? %s\n\n", 
+		   (the_node->the_task.is_done) ? "Yes" : "No");
+	}
+    }
 }
 
 void
