@@ -12,7 +12,7 @@ main()
     list *the_list = (list *) malloc(sizeof(list));
 
     if (the_list == NULL)
-	return 1;
+		return 1;
 
     the_list->head = NULL;
     the_list->tail = NULL;
@@ -23,33 +23,36 @@ main()
 
     while (option != 5)
     {
-	system("clear");
-	draw_menu_options();
-	printf("\nChoose an option: ");
-	scanf("%d", &option);
-	clean_buffer();
+		system("clear");
+		draw_menu_options();
+		printf("\nChoose an option: ");
+		scanf("%d", &option);
+		clean_buffer();
 
-	system("clear");
+		system("clear");
 
-	switch (option)
-	{
-	    case 1:
-		create_task(the_list);
-		exit_key();
-		break;
-	    case 2:
-		view_tasks(the_list);
-		task_detail(the_list);
-		exit_key();
-		break;
-	    case 3:
-		view_tasks(the_list);
-		delete_task(the_list);
-		exit_key();
-		break;
-	    case 4:
-		break;
-	}
+		switch (option)
+		{
+		    case 1:
+				create_task(the_list);
+				exit_key();
+				break;
+		    case 2:
+				view_tasks(the_list);
+				task_detail(the_list);
+				exit_key();
+				break;
+		    case 3:
+				view_tasks(the_list);
+				delete_task(the_list);
+				exit_key();
+				break;
+		    case 4:
+				view_tasks(the_list);
+				update_task(the_list);
+				exit_key();
+				break;
+		}
     }
 
     remove_all(the_list);
