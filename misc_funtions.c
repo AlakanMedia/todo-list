@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <string.h>
 #include "misc_funtions.h"
 
 void
@@ -10,30 +9,27 @@ clean_buffer()
 }
 
 int
-read_data_file()
+read_data_file(list *the_list)
 {
-	unsigned char title[120];
-	unsigned char description[120];
-	int is_done;
-
 	FILE *file = fopen("data.csv", "r");
 
 	if (file == NULL)
 		return 0;
 
-	int read = 0;
+	unsigned char title[MAX_TITLE];
+	unsigned char description[MAX_DESCRIPTION];
+	int is_done;
+	int read;
 
 	do
 	{
 		read = fscanf(file, "%30[^,],%90[^,],%d\n",
 					  title, description, &is_done);
 
-		if (read != 3 && !feof(file))
+		if ((read != 3 && !feof(file)) || ferror(file))
 			return 0;
 
-		printf("len: %d ", strlen(title));
-		printf("len: %d\n", strlen(description));
-		printf("t: %s\nd: %s\n", title, description);
+		insert_task(the_list, title, description);
 	}
 	while (!feof(file));
 

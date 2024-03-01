@@ -18,6 +18,12 @@ main()
     the_list->tail = NULL;
     the_list->num_elements = 0;
 
+	if (!read_data_file(the_list))
+	{
+		printf("Error reading the file\n");
+		return 1;
+	}
+
     int option = 0;
     int task_remove = 0;
 
