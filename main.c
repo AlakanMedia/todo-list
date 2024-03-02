@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "list.h"
 #include "user_interaction.h"
 #include "misc_funtions.h"
@@ -18,7 +19,7 @@ main()
     the_list->tail = NULL;
     the_list->num_elements = 0;
 
-	if (!read_data_file(the_list))
+	if (strcmp(read_data_file(the_list), "Success") != 0)
 	{
 		printf("Error reading the file\n");
 		return 1;

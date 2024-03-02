@@ -8,13 +8,13 @@ clean_buffer()
     while ((c = getchar()) != '\n' && c != EOF);
 }
 
-int
+char *
 read_data_file(list *the_list)
 {
 	FILE *file = fopen("data.csv", "r");
 
 	if (file == NULL)
-		return 0;
+		return "Error opening the file...\n";
 
 	unsigned char title[MAX_TITLE];
 	unsigned char description[MAX_DESCRIPTION];
@@ -26,13 +26,17 @@ read_data_file(list *the_list)
 		read = fscanf(file, "%30[^,],%90[^,],%d\n",
 					  title, description, &is_done);
 
-		if ((read != 3 && !feof(file)) || ferror(file))
-			return 0;
+		if (read != 3 && !feof(file))
+			return "File format incorrect...\n";
+
+		if (ferror(file))
+			return "Error reading file...\n";
 
 		insert_task(the_list, title, description);
 	}
 	while (!feof(file));
 
 	fclose(file);
-	return 1;
+
+	return "Success";
 }

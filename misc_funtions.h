@@ -4,6 +4,6 @@
 #include "list.h"
 
 void clean_buffer();
-int read_data_file(list *the_list);
+char *read_data_file(list *the_list);
 
 #endif //MISC
