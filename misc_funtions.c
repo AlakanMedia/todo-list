@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "misc_funtions.h"
 
 void
@@ -32,7 +33,8 @@ read_data_file(list *the_list)
 		if (ferror(file))
 			return "Error reading file...\n";
 
-		insert_task(the_list, title, description);
+		if (title[0] != '\0')
+			insert_task(the_list, title, description);
 	}
 	while (!feof(file));
 
