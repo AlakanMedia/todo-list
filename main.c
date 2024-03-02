@@ -62,6 +62,7 @@ main()
 		}
     }
 
+	write_data_file(the_list);
     remove_all(the_list);
     free(the_list);
     the_list = NULL;

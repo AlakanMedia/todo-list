@@ -40,3 +40,29 @@ read_data_file(list *the_list)
 
 	return "Success";
 }
+
+void
+write_data_file(list *the_list)
+{
+	FILE *file = fopen("data.csv", "w");
+
+	if (!is_empty(the_list) && file != NULL)
+	{
+		node *aux = the_list->head;
+
+		while (aux != NULL)
+		{
+			fprintf(file, "%s,%s,%d\n", 
+					aux->the_task.title,
+					aux->the_task.description,
+					aux->the_task.is_done);
+
+			aux = aux->next;	
+
+			if (ferror(file))
+				return;
+		}
+
+		fclose(file);
+	}
+}
