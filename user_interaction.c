@@ -44,7 +44,7 @@ create_task(list *the_list)
     if (i == (MAX_DESCRIPTION - 1))
         clean_buffer();
     
-    if (insert_task(the_list, title, description))
+    if (insert_task(the_list, title, description, 0))
 		printf("\nTask successfully created\n");
     else
 		printf("\nThere was a problem creating the task\n");

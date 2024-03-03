@@ -20,7 +20,7 @@ list;
 
 int is_empty(list *the_list);
 int insert_task(list *the_list, unsigned char title[],
-				unsigned char description[]);
+				unsigned char description[], int is_done);
 node *select_task(list *the_list, int index);
 int remove_task(list *the_list, int index);
 void remove_all(list *the_list);

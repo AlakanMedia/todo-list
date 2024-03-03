@@ -10,7 +10,7 @@ is_empty(list *the_list)
 
 int
 insert_task(list *the_list, unsigned char title[],
-	    unsigned char description[])
+	    	unsigned char description[], int is_done)
 {
     node *new_node = (node *) malloc(sizeof(node));
 
@@ -19,7 +19,7 @@ insert_task(list *the_list, unsigned char title[],
 
     strncpy(new_node->the_task.title, title, MAX_TITLE);
     strncpy(new_node->the_task.description, description, MAX_DESCRIPTION);
-    new_node->the_task.is_done = 0;
+    new_node->the_task.is_done = is_done;
     new_node->next = NULL;
 
     if (is_empty(the_list))

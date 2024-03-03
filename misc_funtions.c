@@ -34,7 +34,7 @@ read_data_file(list *the_list)
 			return "Error reading file...\n";
 
 		if (title[0] != '\0')
-			insert_task(the_list, title, description);
+			insert_task(the_list, title, description, is_done);
 	}
 	while (!feof(file));
 
