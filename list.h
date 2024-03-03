@@ -19,8 +19,9 @@ typedef struct list
 list;
 
 int is_empty(list *the_list);
-int insert_task(list *the_list, unsigned char title[],
-				unsigned char description[], int is_done);
+int insert_task(list *the_list, unsigned char title[], 
+				unsigned char description[], int start_date[],
+				int end_date[], int is_done);
 node *select_task(list *the_list, int index);
 int remove_task(list *the_list, int index);
 void remove_all(list *the_list);

@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <time.h>
 #include "list.h"
 #include "user_interaction.h"
 #include "misc_funtions.h"
@@ -23,6 +24,8 @@ create_task(list *the_list)
     int i = 0;
     unsigned char title[MAX_TITLE];
     unsigned char description[MAX_DESCRIPTION];
+	int start_date[3];
+	int end_date[3];
 
     printf("Enter the task's name: ");
 
@@ -44,7 +47,23 @@ create_task(list *the_list)
     if (i == (MAX_DESCRIPTION - 1))
         clean_buffer();
     
-    if (insert_task(the_list, title, description, 0))
+	time_t time_now = time(NULL); // Número de segundos desde 01/01/1970
+	struct tm *gm_time = gmtime(&time_now);
+
+	*(start_date) = gm_time->tm_mday;
+	*(start_date + 1) = gm_time->tm_mon + 1;
+	*(start_date + 2) = gm_time->tm_year + 1900;
+
+	do
+	{
+		printf("Enter the task completion date (dd/mm/yyyy): ");
+		i = scanf("%d/%d/%d", end_date, end_date + 1, end_date + 2);
+		clean_buffer();
+	}
+	while (!date_correct(end_date) || compare_date(start_date, end_date) > 0
+		   || i < 3);
+
+    if (insert_task(the_list, title, description, start_date, end_date, 0))
 		printf("\nTask successfully created\n");
     else
 		printf("\nThere was a problem creating the task\n");
@@ -95,6 +114,14 @@ task_detail(list *the_list)
 			{
 				printf("\nTitle: %s", the_node->the_task.title);
 			    printf("\nDescription: %s", the_node->the_task.description);
+				printf("\nStart date: %d/%d/%d", 
+						the_node->the_task.start_date[0],
+						the_node->the_task.start_date[1],
+						the_node->the_task.start_date[2]);
+				printf("\nEnd date: %d/%d/%d", 
+						the_node->the_task.end_date[0],
+						the_node->the_task.end_date[1],
+						the_node->the_task.end_date[2]);
 			    printf("\nIs done? %s\n\n", 
 					   (the_node->the_task.is_done) ? "Yes" : "No");
 			}

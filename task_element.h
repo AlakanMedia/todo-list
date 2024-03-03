@@ -8,6 +8,8 @@ typedef struct task
 {
     unsigned char title[MAX_TITLE];
     unsigned char description[MAX_DESCRIPTION];
+	int start_date[3];
+	int end_date[3];
     int is_done;
 }
 task;

@@ -9,8 +9,8 @@ is_empty(list *the_list)
 }
 
 int
-insert_task(list *the_list, unsigned char title[],
-	    	unsigned char description[], int is_done)
+insert_task(list *the_list, unsigned char title[], unsigned char description[],
+			int start_date[], int end_date[], int is_done)
 {
     node *new_node = (node *) malloc(sizeof(node));
 
@@ -19,6 +19,13 @@ insert_task(list *the_list, unsigned char title[],
 
     strncpy(new_node->the_task.title, title, MAX_TITLE);
     strncpy(new_node->the_task.description, description, MAX_DESCRIPTION);
+
+	for (int i = 0; i < 3; i++)
+	{
+		*(new_node->the_task.start_date + i) = *(start_date + i);
+		*(new_node->the_task.end_date + i) = *(end_date + i);
+	}
+
     new_node->the_task.is_done = is_done;
     new_node->next = NULL;
 
