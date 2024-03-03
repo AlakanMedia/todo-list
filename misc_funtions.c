@@ -103,7 +103,7 @@ read_data_file(list *the_list)
 					  end_date + 2,
 					  &is_done);
 
-		if (read != 3 && !feof(file))
+		if (read != 9 && !feof(file))
 			return "File format incorrect...\n";
 
 		if (ferror(file))
