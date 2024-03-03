@@ -122,11 +122,11 @@ task_detail(list *the_list)
 			{
 				printf("\nTitle: %s", the_node->the_task.title);
 			    printf("\nDescription: %s", the_node->the_task.description);
-				printf("\nStart date: %d/%d/%d", 
+				printf("\nStart date: %02d/%02d/%d", 
 						the_node->the_task.start_date[0],
 						the_node->the_task.start_date[1],
 						the_node->the_task.start_date[2]);
-				printf("\nEnd date: %d/%d/%d", 
+				printf("\nEnd date: %02d/%02d/%d", 
 						the_node->the_task.end_date[0],
 						the_node->the_task.end_date[1],
 						the_node->the_task.end_date[2]);
