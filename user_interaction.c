@@ -18,6 +18,20 @@ draw_menu_options()
 }
 
 void
+get_text(unsigned char buffer[], int max_length)
+{
+    int c;
+    int i = 0;
+
+    while (i < (max_length - 1) && (c = getchar()) != '\n')
+        buffer[i++] = c;
+    buffer[i] = '\0';
+
+    if (i == (max_length - 1))
+        clean_buffer();
+}
+
+void
 enter_date(int start_date[], int date[])
 {
 	int i;
@@ -35,32 +49,16 @@ enter_date(int start_date[], int date[])
 void
 create_task(list *the_list)
 {
-    int c;
-    int i = 0;
     unsigned char title[MAX_TITLE];
     unsigned char description[MAX_DESCRIPTION];
 	int start_date[3];
 	int end_date[3];
 
     printf("Enter the task's name: ");
-
-    while (i < (MAX_TITLE - 1) && (c = getchar()) != '\n')
-        title[i++] = c;
-    title[i] = '\0';
-
-    if (i == (MAX_TITLE - 1))
-        clean_buffer();
-
-    i = 0;
+	get_text(title, MAX_TITLE);
 
     printf("Enter the task's description: ");
-    
-    while (i < (MAX_DESCRIPTION - 1) && (c = getchar()) != '\n')
-        description[i++] = c;
-    description[i] = '\0';
-
-    if (i == (MAX_DESCRIPTION - 1))
-        clean_buffer();
+	get_text(description, MAX_DESCRIPTION);
     
 	time_t time_now = time(NULL); // Número de segundos desde 01/01/1970
 	struct tm *gm_time = gmtime(&time_now);
@@ -161,43 +159,15 @@ update_task(list *the_list)
 		scanf("%d", &index);
 		clean_buffer();
 
-    	int c;
-    	int i;
-
 		switch (index)
 		{
 			case 1:
-    			i = 0;
-    			unsigned char title[MAX_TITLE];
-
     			printf("Enter the new name: ");
-
-    			while (i < (MAX_TITLE - 1) && (c = getchar()) != '\n')
-    			    title[i++] = c;
-    			title[i] = '\0';
-
-    			if (i == (MAX_TITLE - 1))
-    			    clean_buffer();
-
-				strncpy(node_update->the_task.title, title, MAX_TITLE);
-
+				get_text(node_update->the_task.title, MAX_TITLE);
 				break;
 			case 2:
-    			i = 0;
-    			unsigned char description[MAX_DESCRIPTION];
-
     			printf("Enter the new description: ");
-    			
-    			while (i < (MAX_DESCRIPTION - 1) && (c = getchar()) != '\n')
-    			    description[i++] = c;
-    			description[i] = '\0';
-
-    			if (i == (MAX_DESCRIPTION - 1))
-    			    clean_buffer();
-
-				strncpy(node_update->the_task.description, description,
-						MAX_DESCRIPTION);
-
+				get_text(node_update->the_task.description, MAX_DESCRIPTION);
 				break;
 			case 3:
 				enter_date(node_update->the_task.start_date,
