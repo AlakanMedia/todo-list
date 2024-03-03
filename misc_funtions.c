@@ -12,16 +12,30 @@ clean_buffer()
 int
 compare_date(void *date_one, void *date_two)
 {
-	if (((int *)date_two)[2] > ((int *)date_one)[2]
-		|| ((int *)date_two)[1] > ((int *)date_one)[1]
-		|| ((int *)date_two)[0] > ((int *)date_one)[0])
+	if (((int *)date_two)[2] > ((int *)date_one)[2])
+	{
 		return -1;
-	else if (((int *)date_two)[2] < ((int *)date_one)[2]
-			 || ((int *)date_two)[1] < ((int *)date_one)[1]
-			 || ((int *)date_two)[0] < ((int *)date_one)[0])
+	}
+	else if (((int *)date_two)[2] < ((int *)date_one)[2])
+	{
 		return 1;
+	}
 	else
-		return 0;
+	{
+		if (((int *)date_two)[1] > ((int *)date_one)[1])
+			return -1;
+		else if (((int *)date_two)[1] < ((int *)date_one)[1])
+			return 1;
+		else
+		{
+			if ((int *)date_two > (int *)date_one)
+				return -1;
+			else if ((int *)date_two < (int *)date_one)
+				return 1;
+		}
+	}
+
+	return 0;
 }
 
 int
