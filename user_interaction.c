@@ -18,6 +18,21 @@ draw_menu_options()
 }
 
 void
+enter_date(int start_date[], int date[])
+{
+	int i;
+
+	do
+	{
+		printf("Enter the task completion date (dd/mm/yyyy): ");
+		i = scanf("%d/%d/%d", date, date + 1, date + 2);
+		clean_buffer();
+	}
+	while (!date_correct(date) || compare_date(start_date, date) > 0
+		   || i < 3);
+}
+
+void
 create_task(list *the_list)
 {
     int c;
@@ -54,14 +69,7 @@ create_task(list *the_list)
 	*(start_date + 1) = gm_time->tm_mon + 1;
 	*(start_date + 2) = gm_time->tm_year + 1900;
 
-	do
-	{
-		printf("Enter the task completion date (dd/mm/yyyy): ");
-		i = scanf("%d/%d/%d", end_date, end_date + 1, end_date + 2);
-		clean_buffer();
-	}
-	while (!date_correct(end_date) || compare_date(start_date, end_date) > 0
-		   || i < 3);
+	enter_date(start_date, end_date);
 
     if (insert_task(the_list, title, description, start_date, end_date, 0))
 		printf("\nTask successfully created\n");
@@ -146,7 +154,8 @@ update_task(list *the_list)
 
 		printf("\n1 - Update name\n");
 		printf("2 - Update description\n");
-		printf("3 - Mark as done\n");
+		printf("3 - Update end date\n");
+		printf("4 - Mark as done\n");
 
 		printf("\nSelect an option: ");
 		scanf("%d", &index);
@@ -191,6 +200,10 @@ update_task(list *the_list)
 
 				break;
 			case 3:
+				enter_date(node_update->the_task.start_date,
+						   node_update->the_task.end_date);
+				break;
+			case 4:
 				node_update->the_task.is_done = !node_update->the_task.is_done;
 				break;
 		}
