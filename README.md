@@ -1,9 +1,7 @@
 # The task list
-
 This is a project that is about making a basic system to be able to manage the tasks or duties that a person may have in the day or week. This project allows you to make a GRUD of your tasks.
 
 ## Objective of this project
-
 The main objective of this project was to improve my skills with the C programming language, since with this work I was able to delve deeper into concepts such as:
 - File management
 - Data structures
@@ -12,7 +10,10 @@ The main objective of this project was to improve my skills with the C programmi
 - Pointers
 
 ## Dependencies
+This project only works on GNU/Linux operating systems
 - C standard library
+- [gcc](https://gcc.gnu.org/)
+- [make](https://www.gnu.org/software/make/)
 
 ## How to install and run
 Clone the project and enter in the directory
