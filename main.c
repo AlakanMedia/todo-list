@@ -28,37 +28,23 @@ main()
     int option = 0;
     int task_remove = 0;
 
+	// Arreglo el cual contiene apuntadores a funciones
+	void (*array_funtions[]) (list *) = { create_task, task_detail, 
+										  update_task, delete_task };	
+
     while (option != 5)
     {
 		system("clear");
+		view_tasks(the_list);
 		draw_menu_options();
 		printf("\nChoose an option: ");
 		scanf("%d", &option);
 		clean_buffer();
 
-		system("clear");
-
-		switch (option)
+		if (option >= 1 && option <= 4)
 		{
-		    case 1:
-				create_task(the_list);
-				exit_key();
-				break;
-		    case 2:
-				view_tasks(the_list);
-				task_detail(the_list);
-				exit_key();
-				break;
-		    case 3:
-				view_tasks(the_list);
-				delete_task(the_list);
-				exit_key();
-				break;
-		    case 4:
-				view_tasks(the_list);
-				update_task(the_list);
-				exit_key();
-				break;
+			array_funtions[option - 1](the_list);			
+			exit_key();
 		}
     }
 
