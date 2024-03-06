@@ -87,8 +87,8 @@ view_tasks(list *the_list)
 
     	while (aux != NULL)
     	{
-    	    printf("%d. Title: %s, ", ++i, aux->the_task.title);
-			printf("%s\n", (aux->the_task.is_done) ? "is done" : "isn't done");
+    	    printf("%d. [%c] %s\n", ++i, (aux->the_task.is_done) ? 'x' : ' ', 
+				   aux->the_task.title);
     	    aux = aux->next;
     	}
 
