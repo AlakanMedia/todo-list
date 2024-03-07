@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "list.h"
 #include "user_interaction.h"
 #include "misc_funtions.h"
@@ -10,14 +9,14 @@ main()
 {
     list *the_list = (list *) malloc(sizeof(list));
 
-    if (the_list == NULL)
+    if (!the_list)
 		return 1;
 
     the_list->head = NULL;
     the_list->tail = NULL;
     the_list->num_elements = 0;
 
-	if (strcmp(read_data_file(the_list), "Success") != 0)
+	if (!read_data_file(the_list))
 	{
 		printf("Error reading the file\n");
 		return 1;

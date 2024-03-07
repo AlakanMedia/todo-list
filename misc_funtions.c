@@ -46,7 +46,7 @@ compare_date(void *date_one, void *date_two)
 	return 0;
 }
 
-int
+char
 date_correct(int date[])
 {
 	if (*(date + 2) >= 0)
@@ -83,13 +83,13 @@ date_correct(int date[])
 	return 0;
 }
 
-char *
+char
 read_data_file(list *the_list)
 {
 	FILE *file = fopen("data.csv", "r");
 
-	if (file == NULL)
-		return "Error opening the file...\n";
+	if (!file)
+		return 0;
 
 	unsigned char title[MAX_TITLE];
 	unsigned char description[MAX_DESCRIPTION];
@@ -112,10 +112,7 @@ read_data_file(list *the_list)
 					  &is_done);
 
 		if (read != 9 && !feof(file))
-			return "File format incorrect...\n";
-
-		if (ferror(file))
-			return "Error reading file...\n";
+			return 0;
 
 		if (title[0] != '\0')
 			insert_task(the_list, title, description, start_date, 
@@ -125,7 +122,7 @@ read_data_file(list *the_list)
 
 	fclose(file);
 
-	return "Success";
+	return 1;
 }
 
 void
@@ -137,7 +134,7 @@ write_data_file(list *the_list)
 	{
 		node *aux = the_list->head;
 
-		while (aux != NULL)
+		while (aux)
 		{
 			fprintf(file, "%s,%s,%d/%d/%d,%d/%d/%d,%d\n", 
 					aux->the_task.title,

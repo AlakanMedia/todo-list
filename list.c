@@ -2,20 +2,19 @@
 #include <string.h>
 #include "list.h"
 
-int
+char
 is_empty(list *the_list)
 {
-    return (the_list->head) ? 0 : 1;
+    return (the_list->num_elements) ? 0 : 1;
 }
 
-int
+char
 insert_task(list *the_list, unsigned char title[], unsigned char description[],
 			int start_date[], int end_date[], int is_done)
 {
     node *new_node = (node *) malloc(sizeof(node));
 
-    if (new_node == NULL)
-		return 0;
+    if (!new_node) return 0;
 
     strncpy(new_node->the_task.title, title, MAX_TITLE);
     strncpy(new_node->the_task.description, description, MAX_DESCRIPTION);
@@ -61,7 +60,7 @@ select_task(list *the_list, int index)
     return aux;
 }
 
-int
+char
 remove_task(list *the_list, int index)
 {
     if (!is_empty(the_list) && index > 0 && index <= the_list->num_elements)
@@ -113,7 +112,7 @@ remove_all(list *the_list)
     {
 		node *aux = NULL;
 
-		while ((aux = the_list->head) != NULL)
+		while (aux = the_list->head)
 		{
 		    the_list->head = the_list->head->next;
 		    aux->next = NULL;
