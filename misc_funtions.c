@@ -3,6 +3,14 @@
 #include "misc_funtions.h"
 
 void
+exit_key()
+{
+    printf("Press any key to exit... ");
+  	getchar();
+    clean_buffer();
+}
+
+void
 clean_buffer()
 {
     int c;

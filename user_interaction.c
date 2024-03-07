@@ -181,7 +181,7 @@ delete_task(list *the_list)
 {
 	if (!is_empty(the_list))
 	{
-	    int task_remove = 0;
+	    int task_remove;
 	    printf("Select a task to remove: ");
 	    scanf("%d", &task_remove);
 		clean_buffer();

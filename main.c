@@ -5,8 +5,6 @@
 #include "user_interaction.h"
 #include "misc_funtions.h"
 
-void exit_key();
-
 int
 main()
 {
@@ -54,12 +52,4 @@ main()
     the_list = NULL;
 
     return 0;
-}
-
-void
-exit_key()
-{
-    printf("Press any key to exit... ");
-    getchar();
-    clean_buffer();
 }
