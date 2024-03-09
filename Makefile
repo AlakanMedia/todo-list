@@ -1,19 +1,21 @@
-all: program
+CC = gcc
 
-program: main.o list.o user_interaction.o misc_funtions.o
-	gcc -o task_list main.o list.o user_interaction.o misc_funtions.o
+all: task_list
 
-main.o: main.c list.h user_interaction.h misc_funtions.h
-	gcc -c main.c
+task_list: main.o list.o user.o misc.o
+	$(CC) $^ -o $@
 
-list.o: list.c list.h task_element.h misc_funtions.h
-	gcc -c list.c
+main.o: main.c list.h user.h misc.h
+	$(CC) -c main.c
 
-user_interaction.o: user_interaction.c user_interaction.h
-	gcc -c user_interaction.c
+list.o: list.c list.h task.h
+	$(CC) -c list.c
 
-misc_funtions.o: misc_funtions.c misc_funtions.h
-	gcc -c misc_funtions.c
+user.o: user.c user.h list.h misc.h
+	$(CC) -c user.c
+
+misc.o: misc.c misc.h
+	$(CC) -c misc.c
 
 clean:
-	rm -f *.o task_list
+	rm -rf *.o task_list
