@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "list.h"
-#include "user_interaction.h"
-#include "misc_funtions.h"
+#include "user.h"
+#include "misc.h"
 
 int
 main()

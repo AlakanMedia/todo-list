@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#include "misc_funtions.h"
+#include "misc.h"
 
 void
 exit_key()

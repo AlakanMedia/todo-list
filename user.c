@@ -3,8 +3,8 @@
 #include <string.h>
 #include <time.h>
 #include "list.h"
-#include "user_interaction.h"
-#include "misc_funtions.h"
+#include "user.h"
+#include "misc.h"
 
 void
 draw_menu_options()
