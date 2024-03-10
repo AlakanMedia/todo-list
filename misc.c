@@ -2,6 +2,8 @@
 #include <string.h>
 #include "misc.h"
 
+#define FILE_NAME "data.csv"
+
 void
 exit_key()
 {
@@ -86,9 +88,9 @@ date_correct(int date[])
 char
 read_data_file(list *the_list)
 {
-	FILE *file = fopen("data.csv", "r");
+	FILE *file;
 
-	if (!file)
+	if (!(file = fopen(FILE_NAME, "r")))
 		return 0;
 
 	unsigned char title[MAX_TITLE];
@@ -128,9 +130,9 @@ read_data_file(list *the_list)
 void
 write_data_file(list *the_list)
 {
-	FILE *file = fopen("data.csv", "w");
+	FILE *file;
 
-	if (!is_empty(the_list) && file != NULL)
+	if (!is_empty(the_list) && (file = fopen(FILE_NAME, "w")))
 	{
 		node *aux = the_list->head;
 
