@@ -1,5 +1,5 @@
-#ifndef TASK_ELEMENT
-#define TASK_ELEMENT
+#ifndef TASK_H
+#define TASK_H
 
 #define MAX_TITLE 31
 #define MAX_DESCRIPTION 91
@@ -14,4 +14,4 @@ typedef struct task
 }
 task;
 
-#endif // TASK_ELEMENT
+#endif // TASK_H

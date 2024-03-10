@@ -1,5 +1,5 @@
-#ifndef USER_INTERACTION
-#define USER_INTERACTION
+#ifndef USER_H
+#define USER_H
 
 #include "list.h"
 
@@ -10,4 +10,4 @@ void task_detail(list *the_list);
 void update_task(list *the_list);
 void delete_task(list *the_list);
 
-#endif //USER_INTERACTION
+#endif //USER_H

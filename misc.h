@@ -1,5 +1,5 @@
-#ifndef MISC
-#define MISC
+#ifndef MISC_H
+#define MISC_H
 
 #include "list.h"
 
@@ -10,4 +10,4 @@ char date_correct(int date[]);
 char read_data_file(list *the_list);
 int compare_date(void *date_one, void *date_two);
 
-#endif //MISC
+#endif //MISC_H

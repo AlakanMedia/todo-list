@@ -1,5 +1,5 @@
-#ifndef LIST
-#define LIST
+#ifndef LIST_H
+#define LIST_H
 
 #include "task.h"
 
@@ -26,4 +26,4 @@ node *select_task(list *the_list, int index);
 char remove_task(list *the_list, int index);
 void remove_all(list *the_list);
 
-#endif // LIST
+#endif // LIST_H
