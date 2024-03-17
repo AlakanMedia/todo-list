@@ -3,27 +3,27 @@
 
 #include "task.h"
 
-typedef struct node
+typedef struct Node
 {
-    task the_task;
-    struct node *next;
+    Task the_task;
+    struct Node *next;
 }
-node;
+Node;
 
-typedef struct list
+typedef struct List
 {
-    node *head;
-    node *tail;
+    Node *head;
+    Node *tail;
     int num_elements;
 }
-list;
+List;
 
-char is_empty(list *the_list);
-char insert_task(list *the_list, unsigned char title[], 
+char is_empty(List *the_list);
+char insert_task(List *the_list, unsigned char title[], 
 				unsigned char description[], int start_date[],
 				int end_date[], int is_done);
-node *select_task(list *the_list, int index);
-char remove_task(list *the_list, int index);
-void remove_all(list *the_list);
+Node *select_task(List *the_list, int index);
+char remove_task(List *the_list, int index);
+void remove_all(List *the_list);
 
 #endif // LIST_H

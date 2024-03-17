@@ -47,7 +47,7 @@ enter_date(int start_date[], int date[])
 }
 
 void
-create_task(list *the_list)
+create_task(List *the_list)
 {
     unsigned char title[MAX_TITLE];
     unsigned char description[MAX_DESCRIPTION];
@@ -72,15 +72,15 @@ create_task(list *the_list)
     if (insert_task(the_list, title, description, start_date, end_date, 0))
 		printf("\nTask successfully created\n");
     else
-		printf("\nThere was a problem creating the task\n");
+		fprintf(stderr, "\nThere was a problem creating the task\n");
 }
 
 void
-view_tasks(list *the_list)
+view_tasks(List *the_list)
 {
     if (!is_empty(the_list))
     {
-		node *aux = the_list->head;
+		Node *aux = the_list->head;
     	int i = 0;
 
     	printf("Task list\n\n");
@@ -99,7 +99,7 @@ view_tasks(list *the_list)
 }
 
 void
-task_detail(list *the_list)
+task_detail(List *the_list)
 {
 	if (!is_empty(the_list))
 	{
@@ -109,7 +109,7 @@ task_detail(list *the_list)
 		scanf("%d", &index); 
     	clean_buffer();
 
-		node *the_node = select_task(the_list, index);
+		Node *the_node = select_task(the_list, index);
 
 		if (the_node)
 		{
@@ -130,7 +130,7 @@ task_detail(list *the_list)
 }
 
 void
-update_task(list *the_list)
+update_task(List *the_list)
 {
 	if (!is_empty(the_list))
 	{
@@ -139,7 +139,7 @@ update_task(list *the_list)
 		scanf("%d", &index);
 		clean_buffer();
 
-		node *node_update = select_task(the_list, index);
+		Node *node_update = select_task(the_list, index);
 
 		if (!node_update)
 			return;
@@ -177,7 +177,7 @@ update_task(list *the_list)
 }
 
 void
-delete_task(list *the_list)
+delete_task(List *the_list)
 {
 	if (!is_empty(the_list))
 	{
@@ -189,6 +189,6 @@ delete_task(list *the_list)
 	    if (remove_task(the_list, task_remove))
 			printf("\nTask successfully removed\n");
 	    else
-			printf("\nThere was a problem removing the task\n");
+			fprintf(stderr, "\nThere was a problem removing the task\n");
 	}
 }

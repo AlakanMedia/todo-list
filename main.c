@@ -7,7 +7,7 @@
 int
 main()
 {
-    list *the_list = (list *) malloc(sizeof(list));
+    List *the_list = (List *) malloc(sizeof(List));
 
     if (!the_list)
 		return 1;
@@ -18,7 +18,7 @@ main()
 
 	if (!read_data_file(the_list))
 	{
-		printf("Error reading the file\n");
+		fprintf(stderr, "Error reading the file\n");
 		return 1;
 	}
 
@@ -26,7 +26,7 @@ main()
     int task_remove = 0;
 
 	// Arreglo el cual contiene apuntadores a funciones
-	void (*array_funtions[]) (list *) = { create_task, task_detail, 
+	void (*array_funtions[]) (List *) = { create_task, task_detail, 
 										  update_task, delete_task };	
 
     while (option != 5)

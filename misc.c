@@ -86,7 +86,7 @@ date_correct(int date[])
 }
 
 char
-read_data_file(list *the_list)
+read_data_file(List *the_list)
 {
 	FILE *file;
 
@@ -128,13 +128,13 @@ read_data_file(list *the_list)
 }
 
 void
-write_data_file(list *the_list)
+write_data_file(List *the_list)
 {
 	FILE *file;
 
 	if (!is_empty(the_list) && (file = fopen(FILE_NAME, "w")))
 	{
-		node *aux = the_list->head;
+		Node *aux = the_list->head;
 
 		while (aux)
 		{

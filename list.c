@@ -3,16 +3,16 @@
 #include "list.h"
 
 char
-is_empty(list *the_list)
+is_empty(List *the_list)
 {
     return (the_list->num_elements) ? 0 : 1;
 }
 
 char
-insert_task(list *the_list, unsigned char title[], unsigned char description[],
+insert_task(List *the_list, unsigned char title[], unsigned char description[],
 			int start_date[], int end_date[], int is_done)
 {
-    node *new_node = (node *) malloc(sizeof(node));
+    Node *new_node = (Node *) malloc(sizeof(Node));
 
     if (!new_node) return 0;
 
@@ -44,10 +44,10 @@ insert_task(list *the_list, unsigned char title[], unsigned char description[],
     return 1;
 }
 
-node *
-select_task(list *the_list, int index)
+Node *
+select_task(List *the_list, int index)
 {
-    node *aux = NULL;
+    Node *aux = NULL;
 
     if (!is_empty(the_list) && index > 0 && index <= the_list->num_elements)
     {
@@ -61,11 +61,11 @@ select_task(list *the_list, int index)
 }
 
 char
-remove_task(list *the_list, int index)
+remove_task(List *the_list, int index)
 {
     if (!is_empty(the_list) && index > 0 && index <= the_list->num_elements)
     {
-		node *aux = the_list->head;
+		Node *aux = the_list->head;
 
 		for (int i = 1; i < (index - 1); i++)
 		    aux = aux->next;
@@ -88,7 +88,7 @@ remove_task(list *the_list, int index)
 		}
 		else
 		{
-		    node *to_delete = aux->next;
+		    Node *to_delete = aux->next;
 		    aux->next = to_delete->next;
 		    to_delete->next = NULL;
 		    aux = to_delete;
@@ -106,11 +106,11 @@ remove_task(list *the_list, int index)
 }
 
 void
-remove_all(list *the_list)
+remove_all(List *the_list)
 {
     if (!is_empty(the_list))
     {
-		node *aux = NULL;
+		Node *aux = NULL;
 
 		while (aux = the_list->head)
 		{
